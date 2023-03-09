@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>362440802072-2tedsm46fdmvrsrkahrn2cu5ofrmn1dv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.362440802072-2tedsm46fdmvrsrkahrn2cu5ofrmn1dv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAIRDGkGmOl8CJwxB82BQySWeeA4WjNdV0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>362440802072</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.basketbudPrototype</string>
+	<key>PROJECT_ID</key>
+	<string>basketbuddb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>basketbuddb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:362440802072:ios:21fde71ca303e7731d286d</string>
+	<key>DATABASE_URL</key>
+	<string>https://basketbuddb-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

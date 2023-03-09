@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "362440802072",
+    "firebase_url": "https://basketbuddb-default-rtdb.firebaseio.com",
+    "project_id": "basketbuddb",
+    "storage_bucket": "basketbuddb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362440802072:android:01c97b0951f0d4651d286d",
+        "android_client_info": {
+          "package_name": "com.example.basketbud_prototype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362440802072-t0ruuh749rjpi750psdkcbv0pk98fobe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqpEVaaiwphEJisqBHxoiAA6Myim5oTkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362440802072-t0ruuh749rjpi750psdkcbv0pk98fobe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
