@@ -1,6 +1,11 @@
+import 'package:basketbud_prototype/camera_start.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
+  //ensure initialized
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(const MaterialApp(
     home: MyApp(),
   ));
@@ -42,6 +47,10 @@ class _MyAppState extends State<MyApp> {
           onPressed: () {
             //call camera from IO
             print('Calling Camera');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CameraStart()),
+            );
           },
         ),
         //add navigation bar on bottom
