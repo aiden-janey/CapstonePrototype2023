@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:basketbud_prototype/save_image.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _CamPreviewState extends State<CamPreview> {
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.check_circle),
           onPressed: () {
-            print("Saving image.");
+            saveImage(imageCaptured);
           }),
     );
   }
