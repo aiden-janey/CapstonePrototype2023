@@ -1,3 +1,4 @@
+import 'package:basketbud_prototype/camera_preview.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -89,6 +90,11 @@ class _CameraStartState extends State<CameraStart> {
                       XFile file = await _controller.takePicture();
                       print("Image captured.");
                       //send captured image to preview page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CamPreview(file)),
+                      );
                     } on CameraException catch (e) {
                       debugPrint("Error capturing image: $e");
                     }
