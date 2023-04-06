@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     Widget page;
-    page = Placeholder();
+    page = const Placeholder();
     return MaterialApp(
       //create home page
       home: Scaffold(
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           //set properties
           backgroundColor: Colors.teal,
-          title: const Text('Capstone Protoype'),
+          title: const Text('BasketBud'),
         ),
         //add a floating button for camera
         floatingActionButton: FloatingActionButton(

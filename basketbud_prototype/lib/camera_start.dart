@@ -48,13 +48,13 @@ class _CameraStartState extends State<CameraStart> {
     super.dispose();
   }
 
-  //building camera stream widiget
+  //building camera stream widget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          //allow camera preview to fill avaialble space
+          //allow camera preview to fill available space
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -73,36 +73,45 @@ class _CameraStartState extends State<CameraStart> {
           ),
           //button for initiating image capture
           Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: Center(
-                child: IconButton(
-                  color: Colors.amber,
-                  onPressed: () async {
-                    //check if camera controller is initialized or busy
-                    if (!_controller.value.isInitialized ||
-                        _controller.value.isTakingPicture) {
-                      return null;
-                    }
-                    //try catch taking an image
-                    try {
-                      await _controller.setFlashMode(FlashMode.auto);
-                      //save image to file
-                      XFile file = await _controller.takePicture();
-                      print("Image captured.");
-                      //send captured image to preview page
+            padding: const EdgeInsets.all(3.0),
+            child: Center(
+              child: IconButton(
+                color: Colors.amber,
+                onPressed: () async {
+                  //check if camera controller is initialized or busy
+                  if (!_controller.value.isInitialized ||
+                      _controller.value.isTakingPicture) {
+                    return;
+                  }
+
+                  // Store the current context in a variable
+                  final currentContext = context;
+
+                  //try catch taking an image
+                  try {
+                    await _controller.setFlashMode(FlashMode.auto);
+                    //save image to file
+                    XFile file = await _controller.takePicture();
+                    print("Image captured.");
+
+                    // Use Future.microtask to execute the Navigator.push() after the current build method
+                    Future.microtask(() {
                       Navigator.push(
-                        context,
+                        currentContext, // Use the stored context
                         MaterialPageRoute(
-                            builder: (context) => CamPreview(file)),
+                          builder: (context) => CamPreview(file),
+                        ),
                       );
-                    } on CameraException catch (e) {
-                      debugPrint("Error capturing image: $e");
-                    }
-                  },
-                  icon: const Icon(Icons.circle),
-                  iconSize: 40,
-                ),
-              ))
+                    });
+                  } on CameraException catch (e) {
+                    debugPrint("Error capturing image: $e");
+                  }
+                },
+                icon: const Icon(Icons.circle),
+                iconSize: 40,
+              ),
+            ),
+          )
         ],
       ),
     );

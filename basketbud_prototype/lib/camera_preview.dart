@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 //preview image
 class CamPreview extends StatefulWidget {
-  CamPreview(this.file, {super.key});
-  XFile file;
+  const CamPreview(this.file, {final Key? key}) : super(key: key);
+  final XFile file;
   @override
   State<CamPreview> createState() => _CamPreviewState();
 }

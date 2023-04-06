@@ -9,7 +9,7 @@ Future<String> get _localPath async {
   return directory.path;
 }
 
-//get reference to file path (appened file name)
+//get reference to file path (append file name)
 Future<File> get _localFile async {
   final path = await _localPath;
   //currently will overwrite
