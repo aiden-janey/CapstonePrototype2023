@@ -20,6 +20,9 @@ Future<File> get _localFile async {
 Future<File> saveImage(File image) async {
   final file = await _localFile;
   print("Saving image.");
+  //"/data/user/0/com.example.basketbud_prototype/app_flutter/test_image.jpg"
+  //path is only accessible with root access or opened via Android Studio
+  print(file.path);
   // Write the file
   return image.copy(file.path);
 }
