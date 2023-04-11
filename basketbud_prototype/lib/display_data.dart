@@ -2,16 +2,10 @@ import 'package:basketbud_prototype/database_access.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'database_access.dart';
 
 class DisplayData extends StatelessWidget {
-  final List<Map<String, dynamic>> data = [
-    {'name': 'John', 'age': 28, 'email': 'john@example.com'},
-    {'name': 'Sarah', 'age': 32, 'email': 'sarah@example.com'},
-    {'name': 'Tom', 'age': 24, 'email': 'tom@example.com'},
-    {'name': 'Jane', 'age': 41, 'email': 'jane@example.com'},
-    {'name': 'David', 'age': 36, 'email': 'david@example.com'},
-  ];
-  Map<String, dynamic> items = getData() as Map<String, dynamic>;
+  Future<List<Map<String, dynamic>>> items = getData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +16,10 @@ class DisplayData extends StatelessWidget {
         child: DataTable(
           columns: [
             DataColumn(label: Text('Name')),
-            DataColumn(label: Text('Age')),
-            DataColumn(label: Text('Email')),
           ],
-          rows: data.map((row) {
-            return DataRow(cells: [
-              DataCell(Text(row['name'])),
-              DataCell(Text(row['age'].toString())),
-              DataCell(Text(row['email'])),
-            ]);
-          }).toList(),
+          rows: items.then((list) {
+            return DataRow(cells: [DataCell(Text(list['Name'].toString()))]);
+          }),
         ),
       ),
     );
