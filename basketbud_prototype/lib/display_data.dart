@@ -1,3 +1,4 @@
+import 'package:basketbud_prototype/database_access.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,7 @@ class DisplayData extends StatelessWidget {
     {'name': 'Jane', 'age': 41, 'email': 'jane@example.com'},
     {'name': 'David', 'age': 36, 'email': 'david@example.com'},
   ];
-  final DocumentSnapshot snapshot = FirebaseFirestore.instance
-      .collection('Item') as DocumentSnapshot<Object?>;
-  final Map<String, dynamic> items = snapshot.data() as Map<String, dynamic>;
-
+  Map<String, dynamic> items = getData() as Map<String, dynamic>;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
