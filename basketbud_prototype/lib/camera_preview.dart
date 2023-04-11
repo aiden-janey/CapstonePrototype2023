@@ -4,6 +4,8 @@ import 'package:basketbud_prototype/save_image.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'display_data.dart';
+
 //preview image
 class CamPreview extends StatefulWidget {
   const CamPreview(this.file, {final Key? key}) : super(key: key);
@@ -25,6 +27,8 @@ class _CamPreviewState extends State<CamPreview> {
           child: const Icon(Icons.check_circle),
           onPressed: () {
             saveImage(imageCaptured);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DisplayData()));
           }),
     );
   }
