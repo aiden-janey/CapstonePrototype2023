@@ -1,32 +1,40 @@
-import 'package:basketbud_prototype/database_access.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'database_access.dart';
 
 class DisplayData extends StatelessWidget {
+  final Stream<QuerySnapshot> itemStream =
+      FirebaseFirestore.instance.collection('Item').snapshots();
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: _getData().snapshots(),
+      stream: itemStream, //_getData().snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         }
-        if (!snapshot.hasData) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return Text('Loading...');
         }
-        return DataTable(
-          columns: <DataColumn>[DataColumn(label: Text('Name'))],
-          rows: _buildRows(snapshot.data!.docs),
+        return ListView(
+          children: snapshot.data!.docs.map((DocumentSnapshot document) {
+            Map<String, dynamic> data =
+                document.data()! as Map<String, dynamic>;
+            return ListTile(
+              title: Text(data['Name']),
+            );
+          }).toList(),
         );
+        // return DataTable(
+        //   columns: <DataColumn>[DataColumn(label: Text('Name'))],
+        //   rows: _buildRows(snapshot.data!.docs),
+        // );
       },
     );
   }
 
   Query<Object?> _getData() {
-    final collection = FirebaseFirestore.instance.collection('Item');
-    Query query = collection.where('Name', isEqualTo: 'AMP MIXED BER');
+    Query query = FirebaseFirestore.instance.collection('Item');
     return query;
   }
 
