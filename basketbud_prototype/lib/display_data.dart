@@ -20,8 +20,10 @@ class DisplayData extends StatelessWidget {
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
-            return ListTile(
-              title: Text(data['Name']),
+            return Material(
+              child: ListTile(
+                title: Text(data['Name']),
+              ),
             );
           }).toList(),
         );
@@ -33,26 +35,26 @@ class DisplayData extends StatelessWidget {
     );
   }
 
-  Query<Object?> _getData() {
-    Query query = FirebaseFirestore.instance.collection('Item');
-    return query;
-  }
+  // Query<Object?> _getData() {
+  //   Query query = FirebaseFirestore.instance.collection('Item');
+  //   return query;
+  // }
 
-  List<DataRow> _buildRows(List<DocumentSnapshot> documents) {
-    List<DataRow> rows = [];
+  // List<DataRow> _buildRows(List<DocumentSnapshot> documents) {
+  //   List<DataRow> rows = [];
 
-    for (DocumentSnapshot document in documents) {
-      String name;
-      if (document.exists) {
-        name = document.get('Name');
-      } else {
-        name = "DNE";
-      }
+  //   for (DocumentSnapshot document in documents) {
+  //     String name;
+  //     if (document.exists) {
+  //       name = document.get('Name');
+  //     } else {
+  //       name = "DNE";
+  //     }
 
-      DataRow row = DataRow(cells: [DataCell(Text(name))]);
+  //     DataRow row = DataRow(cells: [DataCell(Text(name))]);
 
-      rows.add(row);
-    }
-    return rows;
-  }
+  //     rows.add(row);
+  //   }
+  //   return rows;
+  // }
 }
