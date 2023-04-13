@@ -23,6 +23,7 @@ class DisplayData extends StatelessWidget {
             return Material(
               child: ListTile(
                 title: Text(data['Name']),
+                subtitle: Text(data['Price']),
               ),
             );
           }).toList(),
